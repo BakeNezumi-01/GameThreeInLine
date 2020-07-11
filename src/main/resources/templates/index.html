@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  	<meta charset="utf-8">
+	    <title>Game</title>
+  </head>
+  <body>
+    <div style=" width: 100%; max-width: 1024px;  height :100%; margin: auto; background: silver">
+    	<table style=" width: 100%; max-width: 1024px;   height :100%;  ">
+    		<tr >
+			    <th>
+					<div id="field" style=" width: 80%; height: 100%; margin: auto; float:left; position: relative">
+						<script>
+							fieldSize = 0; //px
+							gameFieldSize = 13; //cells
+							section = 0; //px
+							isMoveMine = true;
+							storageOfMoves = [];
+
+							fieldSize =document.documentElement.clientHeight;
+							section = Math.trunc(fieldSize / gameFieldSize); //px
+							fieldSize = section * gameFieldSize; //px
+							// works yet
+
+							//width = fieldSize; height = fieldSize;margin = "10px";
+							document.write('<canvas id="canvas" width="' + fieldSize + '" height="'+ fieldSize +'" border="3px"> </canvas> ');
+							var canvas = document.getElementById("canvas");
+							var ctx = canvas.getContext('2d');
+							// works yet
+
+							//drawBorder();
+							for( i = 0; i < gameFieldSize; i++){
+								drawHorizontalLineMarked(section * i, 0, section);
+								drawHorizontalLineMarked(section * i, fieldSize, section);
+								drawVerticalLineMarked(0, section * i, section);
+								drawVerticalLineMarked(fieldSize, section * i, section);
+							}
+
+							
+
+							//vertical passive blocks
+							for(i = 1; i < gameFieldSize ; i ++){
+								x = i;
+								y = 0;
+								while(y < gameFieldSize){
+									drawVerticalLineRect(x * section, y*section, section);
+									y++;
+								}
+							}
+
+							//horizontal passive blocks
+							for(i = 1; i < gameFieldSize ; i ++){
+								y = i;
+								x = 0;
+								while(x < gameFieldSize){
+									drawHorizontalLineRect(x * section, y*section, section);
+									x++;
+								}
+							}
+
+							//vertical active blocks
+							for(i = 1; i < gameFieldSize ; i ++){
+								x = i;
+								y = 0;
+								while(y < gameFieldSize){
+									document.write(
+										'<div onclick="klick(this)" id="v' + x +'.'+ y + '" class = "mutable" style = " display: block;  position: absolute; left:'
+										+ (x*section -5) +'px; top:'+ (y*section +5) +'px; width:10px; height:'+ (section -10) +'px"></div>');
+									y++;
+								}
+							}
+
+							//horizontal active blocks
+							for(i = 1; i < gameFieldSize ; i ++){
+								y = i;
+								x = 0;
+								while(x < gameFieldSize){
+									document.write(
+										'<div onclick="klick(this)" id="h' + x +'.'+ y + '" class = "mutable" style = " display: block;  position: absolute; left:'
+										+ (x*section +5) +'px; top:'+ (y*section -5) +'px; height:10px; width:'+ (section -10) +'px"></div>');
+									x++;
+								}
+							}
+							//create Block for Field
+							document.write('<div id="blockField" style = " display: none;  position: absolute; left: 0px; top:0px; height:'+ 
+									fieldSize +'px; width:'+ fieldSize +'px; background-color: lightblue; opacity: 0.0;"></div>');
+
+							let fieldsColors = initializeField(gameFieldSize); 
+							let gameFields = initializeField(gameFieldSize); 
+								fillFieldStartingValues(gameFields); // it don't want work in one line
+							
+
+
+							function fillFieldStartingValues(gameFields){	//fill Field with Starting Values
+								for(i = 0; i < gameFieldSize; i++){
+									for(j = 0; j < gameFieldSize; j++){
+										gameFields[i][j] = 4; 
+									}
+								}
+								// уменьшение для краевых полей
+								for(j = 0; j < gameFieldSize; j++){
+									gameFields[0][j] --;
+									gameFields[gameFieldSize - 1][j] --;
+									gameFields[j][0] --;
+									gameFields[j][gameFieldSize - 1] --;
+								}
+							}
+							function initializeField(gameFieldSize){
+								let gameFields = [gameFieldSize];
+								for( i = 0; i < gameFieldSize; i++){ gameFields[i] = [];}
+								return gameFields;
+							}
+
+							function drawVerticalLineMarked(startX, startY, length){
+								ctx.beginPath();
+								ctx.rect(startX - 5, startY + 5, 10,  length - 10);
+								ctx.fillStyle = 'red';
+								ctx.fill();
+							}
+							function drawHorizontalLineMarked(startX, startY, length){
+								ctx.beginPath();
+								ctx.rect(startX + 5, startY - 5, length - 10, 10);
+								ctx.fillStyle = 'red';
+								ctx.fill();
+							}
+							function drawVerticalLineRect(startX, startY, length){
+								ctx.beginPath();
+								ctx.rect(startX - 5, startY + 5, 10,  length - 10);
+								ctx.fillStyle = '#696969';
+								ctx.fill();
+							}
+							function drawHorizontalLineRect(startX, startY, length){
+								ctx.beginPath();
+								ctx.rect(startX + 5, startY - 5, length - 10, 10);
+								ctx.fillStyle = '#696969';
+								ctx.fill();
+							}
+							function reduceFieldValue(x, y){
+								if(gameFields[x][y] > 0) { gameFields[x][y]--;}
+								checkFields();
+							}
+							function checkFields(){
+								for(iter = 0; iter < gameFields.length; iter++){
+									for(iterInside = 0; iterInside < gameFields.length; iterInside++){
+										if( gameFields[iter][iterInside] == 0){ 
+											printField(iter , iterInside );
+											if(checkThreeInLine(iter, iterInside)){
+												alert("WIN");
+												return; // maybe it must be deleted
+											} 
+										}
+									}
+								}
+							}
+							function printField(startX, startY){
+								ctx.beginPath();
+								ctx.rect(startX * section + 5, startY * section + 5, section - 10, section - 10);
+								ctx.fillStyle = 'green';
+								ctx.fill();
+							}
+							function checkThreeInLine(x, y){
+								for( i = -1; i < 2; i++){
+									for( j = -1; j < 2; j++){
+
+										if( (x + i >= 0 && x + i < gameFieldSize) && 
+												(y + j >= 0 && y + j < gameFieldSize) ){
+											if( i == 0 && j == 0){
+
+											}else{
+												if( gameFields[x + i][y + j] == 0){
+													if(checkThreeInLineDeep(x, y, i, j)) return true;
+												}
+											}
+										}
+
+									}
+								}
+								return false;
+							}
+							function checkThreeInLineDeep(x, y, i, j){ // it was too large in one function
+								if( (x + 2*i >= 0 && x + 2*i < gameFieldSize) && 
+												(y + 2*j >= 0 && y + 2*j < gameFieldSize) ){
+									if(gameFields[x + 2*i][y + 2*j] == 0) return true;
+								}
+								return false;
+							}
+							function setBlockField(){
+								if(document.getElementById('blockField').style.display == 'none'){
+									document.getElementById('blockField').style.display = 'block';
+									document.getElementById('blockField').style.opacity = 0.3;
+								}else{
+									document.getElementById('blockField').style.display = 'none';
+									document.getElementById('blockField').style.opacity = 0.0;
+								}
+							}
+
+							function emptyAction(){} 
+							function reload(){ // it doesn't work
+								location.reload();
+							}
+							function sendMove(x, y, direction){
+
+								const request = new XMLHttpRequest();
+								const url = "/sendMove";
+								const params = "x=" + x + "&y=" + y + "&direction=" + direction;
+								 
+								//	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие 
+								request.responseType =	"json";
+								request.open("POST", url, true);
+								request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+								 
+								request.addEventListener("readystatechange", () => {
+								 
+								    if (request.readyState === 4 && request.status === 200) {
+								        let obj = request.response;
+								       
+										console.log(obj);       
+										doMove(obj.x, obj.y, obj.direction);
+										document.getElementById("" + obj.direction + "" + obj.x + "." + obj.y).onclick = emptyAction();
+										isMoveMine = true;
+										setBlockField(); 
+									}
+								});
+								 
+								request.send(params);
+							}
+							function doMove(x, y, direction ){
+								isItPossible = checkIsItPossible(x, y, direction);
+								if(isItPossible){
+									if(direction == 'v'){ // if vertical
+										reduceFieldValue(x , y);   
+										reduceFieldValue(x - 1, y );   
+											console.log("[" + x + " " + y + "]v");
+										drawVerticalLineMarked(x * section, y * section, section);
+									}else{ // else horizontal
+										reduceFieldValue(x , y ); 
+										reduceFieldValue(x , y - 1); 
+											console.log("[" + x + " " + y + "]h");
+										drawHorizontalLineMarked(x * section, y * section, section);
+									}
+								}else{
+									console.log("impossible move [" + x + " " + y + "]" + direction);
+								}
+							}
+							function checkIsItPossible(x, y, direction){
+								if( storageOfMoves.find(move => ((move[0] == "" + x) &&
+											 (move[1] == "" + y) && (move[2] == direction))) == undefined ){
+									storageOfMoves.push(["" + x, "" + y, direction]);
+									return true;
+								}
+								return false;
+							}
+							function klick(obj){
+								direction = obj.id.substring(0, 1);
+								x = obj.id.split('.')[0]; //for later
+									x = x.substring(1, x.length); // for later
+								y = obj.id.split('.')[1]; // for later
+
+								doMove(x, y, direction);
+								
+								setBlockField();
+								obj.onclick = emptyAction();
+								isMoveMine = false;
+								sendMove(x, y, direction);
+							}
+							
+						</script>
+					</div>	
+				</th>
+			    <th>
+			    	<div id="inf" style=" height: 100%;">
+			    		place for something, but i don't know what it is
+			    		<br/>
+			    		<button action = "reload()"> Emty button</button>
+			    	</div>
+			    </th>
+			</tr>
+		</table>
+	</div>			
+<style>
+.mutable:hover {background: pink}
+.marked{ background: black}
+.clicked{ onclick = "emptyAction()"; }
+body{ margin-top: 0px; margin-bottom: 0px; }
+</style>
+  </body>
+</html>
