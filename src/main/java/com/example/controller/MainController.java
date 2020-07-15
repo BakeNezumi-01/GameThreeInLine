@@ -1,23 +1,49 @@
 package com.example.controller;
 
+import com.example.domain.Game;
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class MainController {
 
-    @GetMapping("/main")
-    public String main(Model model) {
-        return "main";
+    private ArrayList<Game> listOfGames = new ArrayList<>();
+
+    @PostMapping("/")
+    public String create(Model model,
+                         @AuthenticationPrincipal User user,
+                         @RequestParam(value = "playerComment") String playerComment) {
+        listOfGames.add(new Game(user, playerComment));
+        model.addAttribute(listOfGames);
+        return "index";
     }
 
     @GetMapping("/")
-    public String basic(Model model) {
-        return "index";
+    public String main(Model model) {
+        model.addAttribute("listOfGames",  listOfGames);
+        return "main";
+    }
+
+    @GetMapping("/index")
+    public ModelAndView index(Model model) {
+        model.addAttribute("listOfGames",  listOfGames);
+        ModelAndView index = new ModelAndView();
+        return index;
+    }
+
+    @GetMapping("/second")
+    public String second(Model model) {
+        model.addAttribute("listOfGames",  listOfGames);
+        return "second";
     }
 
 
