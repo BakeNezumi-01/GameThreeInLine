@@ -1,8 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Game;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.domain.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,30 +19,41 @@ public class MainController {
 
     @PostMapping("/")
     public String create(Model model,
-                         @AuthenticationPrincipal User user,
-                         @RequestParam(value = "playerComment") String playerComment) {
-        listOfGames.add(new Game(user, playerComment));
-        model.addAttribute(listOfGames);
-        return "index";
+                         //@AuthenticationPrincipal User user,
+                         @RequestParam(value = "comment") String comment
+    ) {
+        //listOfGames.add(new Game(user, comment));
+        //model.addAttribute( listOfGames);
+        //System.out.println(comment);
+        //System.out.println(user);
+        return "main";
     }
 
     @GetMapping("/")
-    public String main(Model model) {
+    public String main(@AuthenticationPrincipal User user,
+                       Model model) {
         model.addAttribute("listOfGames",  listOfGames);
         return "main";
     }
 
     @GetMapping("/index")
     public ModelAndView index(Model model) {
-        model.addAttribute("listOfGames",  listOfGames);
+        //model.addAttribute("listOfGames",  listOfGames);
         ModelAndView index = new ModelAndView();
         return index;
     }
 
     @GetMapping("/second")
-    public String second(Model model) {
-        model.addAttribute("listOfGames",  listOfGames);
+    public String second(@AuthenticationPrincipal User user,
+                         Model model) {
+        model.addAttribute("user",  user);
         return "second";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        //model.addAttribute("listOfGames",  listOfGames);
+        return "login";
     }
 
 

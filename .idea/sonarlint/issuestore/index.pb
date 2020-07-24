@@ -7,3 +7,17 @@ Z
 *src/main/java/com/example/domain/Game.java,7\6\76f00eb19f088d4a3e1b8f182b950ecbce761c05
 h
 8src/main/java/com/example/controller/MainController.java,1\9\19f9b091b2d2dcbe4e21351b1181847852b8263f
+†
+V.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_2_1_RELEASE.xml,3\6\360d36f717907d14882390e558dedad12f1718b0
+Š
+Z.idea/libraries/Maven__org_springframework_security_spring_security_core_5_2_1_RELEASE.xml,9\e\9e672424fb3d8f2d9af003ada4e29c37da25d7a9
+x
+H.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_3_0_9_RELEASE.xml,d\e\de4679d10b69478a7a3a18450eb4fdfa38e471ca
+_
+/src/main/java/com/example/Config/MvcConfig.java,2\8\28aac84b37ad5745d0de4da21ad01008f54af4c8
+g
+7src/main/java/com/example/Config/WebSecurityConfig.java,d\2\d28e84a35ac48c7b922e5ac4d76dc8308655ca6f
+b
+2src/main/java/com/example/service/UserService.java,6\e\6e3d881a37ae89f3419de235980ae95d7d6d2f20
+Z
+*src/main/java/com/example/domain/User.java,8\6\86fa030a5d7445c8c37a693a5fae8ecedbaa0804

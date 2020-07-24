@@ -1,11 +1,11 @@
 
-i
-java:S1192"LDefine a constant instead of duplicating this literal "listOfGames" 3 times.(Šœ«À8ü„•÷³.
+W	java:S1256"<This block of commented-out lines of code should be removed.(¾Ïê8²’žåµ.
 ?
-java:S21406")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
-D
-java:S21407")Use "java.util.Random.nextInt()" instead.(Æ×ª£þÿÿÿÿ
-u
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8²æÌò³.
+java:S2140A")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
 _
-java:S44880"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Øª¿V
+java:S4488;"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Øª¿V
+z
+java:S1488)"]Immediately return this expression instead of assigning it to the temporary variable "index".(‹ÂÌ8õ®½šµ.
+W	java:S125("<This block of commented-out lines of code should be removed.(¾Ïê8ÑÌåµ.
+D
+java:S2140B")Use "java.util.Random.nextInt()" instead.(Æ×ª£þÿÿÿÿ
