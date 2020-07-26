@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.domain.Greeting;
 import com.example.domain.Game;
 import com.example.domain.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,13 +20,16 @@ public class MainController {
 
     @PostMapping("/")
     public String create(Model model,
-                         //@AuthenticationPrincipal User user,
+                         @AuthenticationPrincipal User user,
+                         @ModelAttribute Game game,
                          @RequestParam(value = "comment") String comment
     ) {
-        //listOfGames.add(new Game(user, comment));
-        //model.addAttribute( listOfGames);
-        //System.out.println(comment);
-        //System.out.println(user);
+       listOfGames.add(game);
+        model.addAttribute("listOfGames",  listOfGames);
+        model.addAttribute("game", new Game());
+        model.addAttribute("user", user);
+        System.out.println(comment);
+        System.out.println(user);
         return "main";
     }
 
@@ -33,31 +37,39 @@ public class MainController {
     public String main(@AuthenticationPrincipal User user,
                        Model model) {
         model.addAttribute("listOfGames",  listOfGames);
+        model.addAttribute("game", new Game());
+        model.addAttribute("user", user);
         return "main";
+    }
+
+    @PostMapping("/startGame")
+    public String join(Model model,
+                         @AuthenticationPrincipal User user,
+                         @RequestParam(value = "game") String gameUser1
+    ) {
+        System.out.println(gameUser1);
+
+        //toDo
+        for(Game game: listOfGames){
+            if (game.getUser1().getUsername().equals(gameUser1)){
+                game.setUser2(user);
+            }
+        }
+        return "index";
     }
 
     @GetMapping("/index")
     public ModelAndView index(Model model) {
-        //model.addAttribute("listOfGames",  listOfGames);
-        ModelAndView index = new ModelAndView();
-        return index;
-    }
-
-    @GetMapping("/second")
-    public String second(@AuthenticationPrincipal User user,
-                         Model model) {
-        model.addAttribute("user",  user);
-        return "second";
+        return new ModelAndView(); //what
     }
 
     @GetMapping("/login")
     public String login(Model model) {
-        //model.addAttribute("listOfGames",  listOfGames);
         return "login";
     }
 
 
-    @RequestMapping(value = "/sendMove", method = RequestMethod.POST)
+    @PostMapping("/sendMove")
     @ResponseBody
     public Map<String, Object> sendMove(@RequestParam(value = "x") int x,
                                 @RequestParam(value = "y") int y,
@@ -70,6 +82,20 @@ public class MainController {
         return answer;
     }
 
+    @GetMapping("/greeting")
+    public String greetingForm(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("greeting", new Greeting());
+        model.addAttribute("user", user);
+        model.addAttribute("game", new Game());
+        return "greeting";
+    }
 
+    @PostMapping("/greeting")
+    public String greetingSubmit(@AuthenticationPrincipal User user,
+                                 @ModelAttribute Greeting greeting, Model model) {
+        model.addAttribute("greeting", greeting);
+        model.addAttribute("user", user);
+        return "greeting";
+    }
 
 }

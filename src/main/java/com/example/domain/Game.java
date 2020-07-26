@@ -2,27 +2,28 @@ package com.example.domain;
 
 
 import com.example.domain.User;
+import com.example.service.UserService;
+
 
 public class Game {
     private User user1;
     private User user2;
     private String comment;
 
-    public Game(User user1, String comment) {
-        this.user1 = user1;
-        this.comment = comment;
+    private UserService userService = new UserService();
+
+
+    public void setUser1(String user1) {
+        this.user1 = (User) userService.loadUserByUsername(user1);
     }
 
-    public void setUser1(User user1) {
-        this.user1 = user1;
-    }
-
+    //setters are different, it is ok
     public void setUser2(User user2) {
         this.user2 = user2;
     }
 
-    public void setUserComment(String userComment) {
-        this.comment = userComment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public User getUser1() {
@@ -33,7 +34,7 @@ public class Game {
         return user2;
     }
 
-    public String getUserComment() {
+    public String getComment() {
         return comment;
     }
 }
