@@ -1,15 +1,9 @@
 
-D
-java:S2140V")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
 T
 java:S11354"2Complete the task associated to this TODO comment.(¦Ñ©àÿÿÿÿÿ8Ùİª×¸.
-l
-java:S4488d"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(º»şÔúÿÿÿÿ8Ñò··¸.
-_
-java:S4488O"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Øª¿V
-e
-java:S4488\"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(çğœ”8¤ØÈ¸.
-k
-java:S1192^"IDefine a constant instead of duplicating this literal "greeting" 4 times.(÷ëïüÿÿÿÿ8Ñò··¸.
 ?
-java:S2140U")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
+java:S2140N")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
+D
+java:S2140O")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
+k
+java:S1192W"IDefine a constant instead of duplicating this literal "greeting" 4 times.(÷ëïüÿÿÿÿ8Ñò··¸.
