@@ -9,48 +9,90 @@ Technology: Java Spring MVC, Thymeleaf, JavaScript.
 java -jar GameThreeInLine/out/artifact/GameThreeInLine_jar/GameThreeInLine.jar
 
 ├───.idea
+
 │   ├───artifacts
+
 │   ├───codeStyles
+
 │   ├───inspectionProfiles
+
 │   └───libraries
+
 ├───out
 │   └───artifacts
 │       └───GameThreeInLine_jar
 ├───src
+
 │   ├───main
+
 │   │   ├───java
+
 │   │   │   ├───com
+
 │   │   │   │   └───example
+
 │   │   │   │       ├───Config
+
 │   │   │   │       ├───controller
+
 │   │   │   │       ├───domain
+
 │   │   │   │       └───service
+
 │   │   │   └───META-INF
+
 │   │   └───resources
+
 │   │       ├───libs
+
 │   │       ├───META-INF
+
 │   │       └───templates
+
 │   │           └───parts
+
 │   └───test
+
 │       └───java
+
 └───target
+
     ├───classes
+    
     │   ├───com
+    
     │   │   └───example
+    
     │   │       ├───Config
+    
     │   │       ├───controller
+    
     │   │       ├───domain
+    
     │   │       └───service
+    
     │   ├───libs
+    
     │   ├───META-INF
+    
     │   └───templates
+    
     └───generated-sources
+    
         └───annotations
+        
+
 
 # Built With
+
   Maven
+  
   Spring Boot
+  
   ThymeLeaf
   
+  
+  
 # Testing
+
 Will be later
