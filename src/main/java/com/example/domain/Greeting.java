@@ -1,7 +1,6 @@
 package com.example.domain;
 
 public class Greeting {
-
     private long id;
     private String content;
 

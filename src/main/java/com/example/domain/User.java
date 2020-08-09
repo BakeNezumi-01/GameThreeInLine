@@ -6,8 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class User implements UserDetails {
-
-
     private String username;
     private String password;
 
@@ -16,8 +14,7 @@ public class User implements UserDetails {
         return null;
     }
 
-    public User() {
-    }
+    public User() {}
 
     public User(String username, String password) {
         this.password = password;

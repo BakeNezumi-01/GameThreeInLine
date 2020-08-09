@@ -59,7 +59,7 @@ public class MainController {
     }
 
     @GetMapping("/index")
-    public ModelAndView index(Model model) {
+    public ModelAndView index() {
         return new ModelAndView(); //what
     }
 
