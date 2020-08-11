@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.domain.Greeting;
 import com.example.domain.Game;
 import com.example.domain.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,7 +15,7 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    private ArrayList<Game> listOfGames = new ArrayList<>();
+    private final ArrayList<Game> listOfGames = new ArrayList<>();
 
     @PostMapping("/")
     public String create(Model model,
@@ -45,7 +44,7 @@ public class MainController {
     @PostMapping("/startGame")
     public String join(Model model,
                          @AuthenticationPrincipal User user,
-                         @RequestParam(value = "game") String gameUser1
+                         @RequestParam(value = "firstUserOfGame") String gameUser1
     ) {
         System.out.println(gameUser1);
 
@@ -82,7 +81,7 @@ public class MainController {
         return answer;
     }
 
-    @GetMapping("/greeting")
+    /*@GetMapping("/greeting")
     public String greetingForm(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("greeting", new Greeting());
         model.addAttribute("user", user);
@@ -96,6 +95,6 @@ public class MainController {
         model.addAttribute("greeting", greeting);
         model.addAttribute("user", user);
         return "greeting";
-    }
+    }*/
 
 }

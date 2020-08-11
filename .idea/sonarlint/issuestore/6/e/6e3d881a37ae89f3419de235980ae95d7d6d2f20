@@ -1,10 +1,10 @@
 
+{
+java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8ì¾„Æ¶.
+X	java:S125"<This block of commented-out lines of code should be removed.(İáúÁ8ØÛÌƒ¸.
 k
 java:S3824"NReplace this "Map.get()" and condition with a call to "Map.computeIfAbsent()".(ßÄˆå8ØÛÌƒ¸.
-X	java:S125"<This block of commented-out lines of code should be removed.(İáúÁ8ØÛÌƒ¸.
 
 java:S1319/"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".( ÿø»øÿÿÿÿ8ˆÊ–á·.
 Q
 java:S3740"/Provide the parametrized type for this generic.(±ª³Êúÿÿÿÿ8©÷ÃÅ¶.
-{
-java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8ì¾„Æ¶.

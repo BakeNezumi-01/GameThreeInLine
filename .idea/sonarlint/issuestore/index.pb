@@ -55,3 +55,5 @@ g
 7src/main/java/com/example/config/WebSecurityConfig.java,e\4\e4ff95c2c76885ad8d3aa34b062e765f180c04ac
 _
 /src/main/java/com/example/config/MvcConfig.java,5\d\5d48709a640dc5e258eed67bbd51259aa12239b1
+Q
+!src/main/resources/libs/Style.css,f\3\f36e02f18546388975b83c5ec78671e01c9d0924

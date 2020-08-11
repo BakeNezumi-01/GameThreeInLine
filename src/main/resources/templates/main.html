@@ -21,10 +21,10 @@
                                 <tr th:each="game: ${listOfGames}">
                                     <th class="thh" style=" width: 80%; max-width: 600px; " th:text="${game.comment}"></th>
                                     <th class="thh" style=" width: 20%; ">
-                                        <form method="post" action="/startGame">
+                                        <form method="post" th:action="@{/startGame}">
                                             <p>
-                                                <input type="hidden" name="game"
-                                                       value="game.user1.username"/>
+                                                <input type="hidden" name="firstUserOfGame"
+                                                       th:value="${game.user1.username}"/>
                                                 <input type="submit" value="Join"/>
                                             </p>
                                         </form>
@@ -41,7 +41,7 @@
                                 </p>
                                 <p>
                                     <input type="text" th:field="*{comment}" />
-                                    <input type="hidden" th:field="*{user1}" value="user.username" />
+                                    <input type="hidden" th:field="*{user1}" th:value="${user.username}" />
                                 </p>
                                 <p>
                                     <input type="submit" value="Создать"/>
