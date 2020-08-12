@@ -37,8 +37,6 @@ S.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_9_0_RELEASE
 \.idea/libraries/Maven__org_springframework_security_spring_security_config_5_2_1_RELEASE.xml,8\8\88cb58db1eb8ed2938c4eb7cc8531becb16aa825
 ‰
 Y.idea/libraries/Maven__org_springframework_security_spring_security_web_5_2_1_RELEASE.xml,3\d\3d5a88989fcf2b5e6dc6a639fae7049b80d47720
-^
-.src/main/java/com/example/domain/Greeting.java,7\b\7b909c2ce44fe25d0e16f7d4dd4dfa03ddae548e
 W
 '.idea/artifacts/GameThreeInLine_jar.xml,f\a\faf064ab2ffd2a8c02551d9cebac87937dbca30d
 R

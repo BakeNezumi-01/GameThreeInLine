@@ -1,9 +1,8 @@
 
-k
-java:S1192W"IDefine a constant instead of duplicating this literal "greeting" 4 times.(÷ëïüÿÿÿÿ8Ñò··¸.
 D
-java:S2140O")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
+java:S2140N")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
 ?
-java:S2140N")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
+java:S2140M")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
+]	java:S125U"<This block of commented-out lines of code should be removed.(îÃ¦„øÿÿÿÿ8•„¿ê½.
 T
-java:S11354"2Complete the task associated to this TODO comment.(¦Ñ©àÿÿÿÿÿ8Ùİª×¸.
+java:S11353"2Complete the task associated to this TODO comment.(¦Ñ©àÿÿÿÿÿ8Ùİª×¸.

@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/sendMove").permitAll()
+                .antMatchers(  "/index").permitAll()
                 .anyRequest().authenticated();
         http
                 .formLogin()
@@ -38,16 +38,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
-    @Configuration
-    protected static class AuthenticationConfiguration extends
-            GlobalAuthenticationConfigurerAdapter {
-
-        @Override
-        public void init(AuthenticationManagerBuilder auth) throws Exception {
-            auth
-                    .inMemoryAuthentication()
-                    .withUser("user").password("password").roles("USER");
-        }
-
+    protected void registerAuthentication(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+        authManagerBuilder
+                .inMemoryAuthentication()
+                .withUser("user").password("password").roles("ADMIN");
     }
+
+
 }

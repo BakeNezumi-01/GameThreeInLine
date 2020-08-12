@@ -49,6 +49,7 @@ public class MainController {
         System.out.println(gameUser1);
 
         //toDo
+        // move it to service package or ...
         for(Game game: listOfGames){
             if (game.getUser1().getUsername().equals(gameUser1)){
                 game.setUser2(user);
@@ -59,7 +60,7 @@ public class MainController {
 
     @GetMapping("/index")
     public ModelAndView index() {
-        return new ModelAndView(); //what
+        return new ModelAndView();
     }
 
     @GetMapping("/login")
@@ -70,13 +71,15 @@ public class MainController {
 
     @PostMapping("/sendMove")
     @ResponseBody
-    public Map<String, Object> sendMove(@RequestParam(value = "x") int x,
-                                @RequestParam(value = "y") int y,
-                                @RequestParam(value = "direction") String direction) {
+    public Map<String, Object> sendMove(@AuthenticationPrincipal User user,
+                                        @RequestParam(value = "x") int x,
+                                        @RequestParam(value = "y") int y,
+                                        @RequestParam(value = "direction") String direction) {
         Map<String, Object> answer = new HashMap<>();
         answer.put("x", (int) (1 + Math.random() * 11));
         answer.put("y", (int) (1 + Math.random() * 11));
         answer.put("direction", direction);
+        System.out.println(111);
 
         return answer;
     }
