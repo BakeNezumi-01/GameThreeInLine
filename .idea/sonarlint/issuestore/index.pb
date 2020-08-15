@@ -55,3 +55,5 @@ _
 /src/main/java/com/example/config/MvcConfig.java,5\d\5d48709a640dc5e258eed67bbd51259aa12239b1
 Q
 !src/main/resources/libs/Style.css,f\3\f36e02f18546388975b83c5ec78671e01c9d0924
+Z
+*src/main/java/com/example/domain/Role.java,0\f\0fb9fd4ec3534685143ac57b43308610cbb0137a

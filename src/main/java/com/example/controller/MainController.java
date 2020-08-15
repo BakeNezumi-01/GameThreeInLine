@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Game;
+import com.example.domain.Greeting;
 import com.example.domain.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -46,10 +47,10 @@ public class MainController {
                          @AuthenticationPrincipal User user,
                          @RequestParam(value = "firstUserOfGame") String gameUser1
     ) {
-        System.out.println(gameUser1);
+        System.out.println(gameUser1 + "usere1");
 
         //toDo
-        // move it to service package or ...
+        // replace it to service package or ...
         for(Game game: listOfGames){
             if (game.getUser1().getUsername().equals(gameUser1)){
                 game.setUser2(user);
@@ -71,8 +72,7 @@ public class MainController {
 
     @PostMapping("/sendMove")
     @ResponseBody
-    public Map<String, Object> sendMove(@AuthenticationPrincipal User user,
-                                        @RequestParam(value = "x") int x,
+    public Map<String, Object> sendMove(@RequestParam(value = "x") int x,
                                         @RequestParam(value = "y") int y,
                                         @RequestParam(value = "direction") String direction) {
         Map<String, Object> answer = new HashMap<>();
@@ -84,7 +84,7 @@ public class MainController {
         return answer;
     }
 
-    /*@GetMapping("/greeting")
+    @GetMapping("/greeting")
     public String greetingForm(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("greeting", new Greeting());
         model.addAttribute("user", user);
@@ -98,6 +98,6 @@ public class MainController {
         model.addAttribute("greeting", greeting);
         model.addAttribute("user", user);
         return "greeting";
-    }*/
+    }
 
 }
