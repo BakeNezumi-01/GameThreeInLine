@@ -1,10 +1,9 @@
 package com.example.domain;
 
-
-import com.example.domain.User;
 import com.example.service.UserService;
+import org.springframework.context.annotation.Configuration;
 
-
+@Configuration
 public class Game {
     private User user1;
     private User user2;

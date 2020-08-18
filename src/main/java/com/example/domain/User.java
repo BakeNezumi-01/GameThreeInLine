@@ -1,14 +1,12 @@
 package com.example.domain;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
-import static com.example.domain.Role.USER;
-
+@Configuration
 public class User implements UserDetails {
     private String username;
     private String password;

@@ -57,3 +57,7 @@ Q
 !src/main/resources/libs/Style.css,f\3\f36e02f18546388975b83c5ec78671e01c9d0924
 Z
 *src/main/java/com/example/domain/Role.java,0\f\0fb9fd4ec3534685143ac57b43308610cbb0137a
+^
+.src/main/java/com/example/domain/Greeting.java,7\b\7b909c2ce44fe25d0e16f7d4dd4dfa03ddae548e
+Z
+*src/main/resources/templates/greeting.html,7\e\7ee7a35a82f3a774b34f80ceffc975c26b75ad5a

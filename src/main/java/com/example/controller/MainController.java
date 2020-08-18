@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.domain.Game;
-import com.example.domain.Greeting;
 import com.example.domain.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,7 @@ public class MainController {
                          @ModelAttribute Game game,
                          @RequestParam(value = "comment") String comment
     ) {
-       listOfGames.add(game);
+        listOfGames.add(game);
         model.addAttribute("listOfGames",  listOfGames);
         model.addAttribute("game", new Game());
         model.addAttribute("user", user);
@@ -82,22 +81,6 @@ public class MainController {
         System.out.println(111);
 
         return answer;
-    }
-
-    @GetMapping("/greeting")
-    public String greetingForm(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("greeting", new Greeting());
-        model.addAttribute("user", user);
-        model.addAttribute("game", new Game());
-        return "greeting";
-    }
-
-    @PostMapping("/greeting")
-    public String greetingSubmit(@AuthenticationPrincipal User user,
-                                 @ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("greeting", greeting);
-        model.addAttribute("user", user);
-        return "greeting";
     }
 
 }

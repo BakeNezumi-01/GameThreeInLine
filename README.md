@@ -16,9 +16,7 @@ java -jar /out/artifact/GameThreeInLine_jar/GameThreeInLine.jar
 
 # ToDo
 
-- fix a bug during starting
-
-- add multiple session on the server
+- add multiple session on the server(maybe)
 
 - design a beautiful login page (mayby pop-up window)
 
