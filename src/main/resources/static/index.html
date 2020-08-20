@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-	  	<meta charset="utf-8">
-	    <title>Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      <title>Spring Boot WebSocket Chat Application | CalliCoder</title>
+      <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <div style=" width: 100%; max-width: 1024px;  height :100%; margin: auto; background: silver">
-    	<table style=" width: 100%; max-width: 1024px;   height :100%;  ">
-    		<tr >
-			    <th>
-					<div id="field" style=" width: 80%; height: 100%; margin: auto; float:left; position: relative">
-						<script>
+    <noscript>
+      <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+
+    <div id="username-page">
+        <div class="username-page-container">
+            <h1 class="title">Type your username</h1>
+            <form id="usernameForm" name="usernameForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent username-submit">Start</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="game-page" class="hidden"
+         style=" width: 100%; max-width: 1024px;  height :100%; margin: auto; background: silver">
+        <div class="game-container">
+        <table style=" width: 100%; max-width: 1024px;   height :100%;  ">
+            <tr >
+                <th>
+                    <div id="field" style=" width: 80%; height: 100%; margin: auto; float:left; position: relative">
+                        <script>
 							fieldSize = 0; //px
 							gameFieldSize = 13; //cells
 							section = 0; //px
@@ -36,7 +57,7 @@
 								drawVerticalLineMarked(fieldSize, section * i, section);
 							}
 
-							
+
 
 							//vertical passive blocks
 							for(i = 1; i < gameFieldSize ; i ++){
@@ -82,19 +103,19 @@
 								}
 							}
 							//create Block for Field
-							document.write('<div id="blockField" style = " display: none;  position: absolute; left: 0px; top:0px; height:'+ 
+							document.write('<div id="blockField" style = " display: none;  position: absolute; left: 0px; top:0px; height:'+
 									fieldSize +'px; width:'+ fieldSize +'px; background-color: lightblue; opacity: 0.0;"></div>');
 
-							let fieldsColors = initializeField(gameFieldSize); 
-							let gameFields = initializeField(gameFieldSize); 
+							let fieldsColors = initializeField(gameFieldSize);
+							let gameFields = initializeField(gameFieldSize);
 								fillFieldStartingValues(gameFields); // it don't want work in one line
-							
+
 
 
 							function fillFieldStartingValues(gameFields){	//fill Field with Starting Values
 								for(i = 0; i < gameFieldSize; i++){
 									for(j = 0; j < gameFieldSize; j++){
-										gameFields[i][j] = 4; 
+										gameFields[i][j] = 4;
 									}
 								}
 								// уменьшение для краевых полей
@@ -142,12 +163,12 @@
 							function checkFields(){
 								for(iter = 0; iter < gameFields.length; iter++){
 									for(iterInside = 0; iterInside < gameFields.length; iterInside++){
-										if( gameFields[iter][iterInside] == 0){ 
+										if( gameFields[iter][iterInside] == 0){
 											printField(iter , iterInside );
 											if(checkThreeInLine(iter, iterInside)){
 												alert("WIN");
 												return; // maybe it must be deleted
-											} 
+											}
 										}
 									}
 								}
@@ -162,7 +183,7 @@
 								for( i = -1; i < 2; i++){
 									for( j = -1; j < 2; j++){
 
-										if( (x + i >= 0 && x + i < gameFieldSize) && 
+										if( (x + i >= 0 && x + i < gameFieldSize) &&
 												(y + j >= 0 && y + j < gameFieldSize) ){
 											if( i == 0 && j == 0){
 
@@ -178,7 +199,7 @@
 								return false;
 							}
 							function checkThreeInLineDeep(x, y, i, j){ // it was too large in one function
-								if( (x + 2*i >= 0 && x + 2*i < gameFieldSize) && 
+								if( (x + 2*i >= 0 && x + 2*i < gameFieldSize) &&
 												(y + 2*j >= 0 && y + 2*j < gameFieldSize) ){
 									if(gameFields[x + 2*i][y + 2*j] == 0) return true;
 								}
@@ -194,47 +215,49 @@
 								}
 							}
 
-							function emptyAction(){} 
+							function emptyAction(){}
 							function reload(){ // it doesn't work
 								location.reload();
 							}
 							function sendMove(x, y, direction){
-
+							    /* it is npt required now
 								const request = new XMLHttpRequest();
 								const url = "/sendMove";
 								const params = "x=" + x + "&y=" + y + "&direction=" + direction;
-								 
-								//	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие 
+
+								//	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие
 								request.responseType =	"json";
 								request.open("POST", url, true);
 								request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-								 
+
 								request.addEventListener("readystatechange", () => {
-								 
+
 								    if (request.readyState === 4 && request.status === 200) {
 								        let obj = request.response;
-								       
-										console.log(obj);       
+
+										console.log(obj);
 										doMove(obj.x, obj.y, obj.direction);
 										document.getElementById("" + obj.direction + "" + obj.x + "." + obj.y).onclick = emptyAction();
 										isMoveMine = true;
-										setBlockField(); 
+										setBlockField();
 									}
 								});
-								 
-								request.send(params);
+
+								request.send(params);*/
+
+								document.getElementById('message').value = "x=" + x + "&y=" + y + "&direction=" + direction;
 							}
 							function doMove(x, y, direction ){
 								isItPossible = checkIsItPossible(x, y, direction);
 								if(isItPossible){
 									if(direction == 'v'){ // if vertical
-										reduceFieldValue(x , y);   
-										reduceFieldValue(x - 1, y );   
+										reduceFieldValue(x , y);
+										reduceFieldValue(x - 1, y );
 											console.log("[" + x + " " + y + "]v");
 										drawVerticalLineMarked(x * section, y * section, section);
 									}else{ // else horizontal
-										reduceFieldValue(x , y ); 
-										reduceFieldValue(x , y - 1); 
+										reduceFieldValue(x , y );
+										reduceFieldValue(x , y - 1);
 											console.log("[" + x + " " + y + "]h");
 										drawHorizontalLineMarked(x * section, y * section, section);
 									}
@@ -257,31 +280,37 @@
 								y = obj.id.split('.')[1]; // for later
 
 								doMove(x, y, direction);
-								
+
 								setBlockField();
 								obj.onclick = emptyAction();
 								isMoveMine = false;
 								sendMove(x, y, direction);
 							}
-							
+
 						</script>
-					</div>	
-				</th>
-			    <th>
-			    	<div id="inf" style=" height: 100%;">
-			    		place for something, but i don't know what it is
-			    		<br/>
-			    		<button action = "reload()"> Emty button</button>
-			    	</div>
-			    </th>
-			</tr>
-		</table>
-	</div>			
-<style>
-.mutable:hover {background: pink}
-.marked{ background: black}
-.clicked{ onclick = "emptyAction()"; }
-body{ margin-top: 0px; margin-bottom: 0px; }
-</style>
+                    </div>
+                </th>
+                <th>
+                    <div id="inf" class="connecting" style=" height: 100%;">
+                        Don't refresh this page!
+                        <br/>
+                        <form id="messageForm" name="messageForm" nameForm="messageForm">
+                            <div class="form-group">
+                                <div class="input-group clearfix">
+                                        <input type="text" id="message" placeholder="Your move" autocomplete="off" class="form-control"/>
+                                        <button type="submit" class="primary">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </th>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>

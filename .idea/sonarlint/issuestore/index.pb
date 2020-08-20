@@ -53,11 +53,7 @@ g
 7src/main/java/com/example/config/WebSecurityConfig.java,e\4\e4ff95c2c76885ad8d3aa34b062e765f180c04ac
 _
 /src/main/java/com/example/config/MvcConfig.java,5\d\5d48709a640dc5e258eed67bbd51259aa12239b1
-Q
-!src/main/resources/libs/Style.css,f\3\f36e02f18546388975b83c5ec78671e01c9d0924
 Z
 *src/main/java/com/example/domain/Role.java,0\f\0fb9fd4ec3534685143ac57b43308610cbb0137a
-^
-.src/main/java/com/example/domain/Greeting.java,7\b\7b909c2ce44fe25d0e16f7d4dd4dfa03ddae548e
-Z
-*src/main/resources/templates/greeting.html,7\e\7ee7a35a82f3a774b34f80ceffc975c26b75ad5a
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

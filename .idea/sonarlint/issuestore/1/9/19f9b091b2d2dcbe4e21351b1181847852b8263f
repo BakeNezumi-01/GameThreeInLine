@@ -1,9 +1,7 @@
 
-?
-java:S2140O")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
-D
-java:S2140P")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
-k
-java:S1192Y"IDefine a constant instead of duplicating this literal "greeting" 4 times.(÷ëïüÿÿÿÿ8÷çÇ¿.
 T
-java:S11354"2Complete the task associated to this TODO comment.(¦Ñ©àÿÿÿÿÿ8Ùİª×¸.
+java:S11353"2Complete the task associated to this TODO comment.(¦Ñ©àÿÿÿÿÿ8Ùİª×¸.
+D
+java:S2140O")Use "java.util.Random.nextInt()" instead.(Æ×ª£şÿÿÿÿ
+?
+java:S2140N")Use "java.util.Random.nextInt()" instead.(ÖÿƒŠ
