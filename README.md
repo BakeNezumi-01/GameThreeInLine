@@ -2,6 +2,8 @@
 
 This is the game on the checkered field, the goal of which is to be the first to occupy three cells in a row.
 
+
+
 Based on rajeevkumarsingh project, changed for my needs.
 
 Created by rajeevkumarsingh on 24/07/17 - was in every original file.
